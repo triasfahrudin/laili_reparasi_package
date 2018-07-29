@@ -67,11 +67,11 @@
           </div> -->
           
           <input type="hidden" name="email" id="email">
-          <div class="table-thing widget uib_w_4 d-margins" data-uib="twitter%20bootstrap/input" data-ver="1">
+         <!--  <div class="table-thing widget uib_w_4 d-margins" data-uib="twitter%20bootstrap/input" data-ver="1">
             <label class="narrow-control label-top-left" for="telp">Kategori</label>
             <select class="js-example-basic-single wide-control form-control default" name="kategori_jasa" id="kategori_jasa">
             </select>            
-          </div>
+          </div> -->
 
           <div class="table-thing widget uib_w_5 d-margins" data-uib="twitter%20bootstrap/text_area" data-ver="1">
             <label class="narrow-control label-top-left">Kerusakan</label>
@@ -103,15 +103,15 @@
 
       $(document).on("click", ".uib_w_6", function(evt)
       {
-         var txtKategori = $('#kategori_jasa').val();
+         // var txtKategori = $('#kategori_jasa').val();
          var txtKerusakan  = $('#kerusakan').val();
-         var intKategoriJasa = $('#kategori_jasa').val();
+         // var intKategoriJasa = $('#kategori_jasa').val();
          var txtEmail = $('#email').val(); 
 
          $('#alert_div').hide();
          $('#loading_img').hide();
          
-         if( isEmpty(txtKerusakan) || isEmpty(txtKategori) ){
+         if( isEmpty(txtKerusakan)){
           $('#danger_label').html('Penjelasan kerusakan atau kategori tidak boleh kosong')
           $('#alert_div').show();
          }else{
@@ -122,7 +122,7 @@
                 penjual_jasa_id   : localStorage.getItem('order_penjual_id'),
                 status            : 'MENUNGGU_TANGGAPAN_PENJUAL',
                 catatan_pelanggan : txtKerusakan,
-                kategori_jasa_id  : intKategoriJasa,
+                kategori_jasa_id  : localStorage.getItem('curr_kategori_jasa_id'),
                 email             : txtEmail
             }, 'json')
             .done(function (data) {
